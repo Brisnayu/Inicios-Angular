@@ -1,0 +1,11 @@
+<p>{{ name }}</p>
+<p>{{ hour > 12 ? "Buenas tardes" : "Buenos días" }}, {{ name }}</p>
+
+<button (click)="handleClick($event)">Haz click aquí</button>
+
+<img src="{{ imageUrl }}" alt="imageUrl" />
+
+<!-- OTRA MANERA DE HACER LO MISMO,
+es el recomendado y más práctico a la hora
+de trabajar-->
+<img [src]="imageUrl" alt="imageUrl" />

@@ -1,0 +1,51 @@
+<div *ngIf="showContent">
+  <p>Este contenido se mostrará solo si la variable ⭐showContent⭐ es true</p>
+</div>
+
+<ul>
+  <li *ngFor="let name of names">Hola, me llamo {{ name }}</li>
+</ul>
+
+<ul>
+  <ng-container *ngIf="showContent; else elseContainer">
+    <li
+      *ngFor="let user of users; let index = index"
+      [ngClass]="{ highlight: user.isSelected }"
+    >
+      Número: {{ index + 1 }}, Nombre: {{ user.name }}, Edad: {{ user.age }}
+      <button (click)="selectUser(user)">
+        {{ user.isSelected ? "Deseleccionar" : "Seleccionar" }}
+      </button>
+    </li>
+  </ng-container>
+</ul>
+
+<ul>
+  <li
+    *ngFor="let user of users2; let index = index"
+    [ngStyle]="{
+      color: user.isSelected ? 'red' : 'blue'
+    }"
+  >
+    <ng-container
+      [ngTemplateOutlet]="contentTemplate"
+      [ngTemplateOutletContext]="{ 
+        name: user.name, age: user.age, } "
+    >
+    </ng-container>
+    <button (click)="selectUser(user)">
+      {{ user.isSelected ? "Deseleccionar" : "Seleccionar" }}
+    </button>
+  </li>
+</ul>
+
+<ng-template #elseContainer>
+  <p>
+    Este contenido se mostrará solo si la variable showContent es false (else)
+  </p>
+</ng-template>
+
+<ng-template #contentTemplate let-name="name" let-age="age">
+  <p>Nombre: {{ name }}</p>
+  <p>Edad: {{ age }}</p>
+</ng-template>
