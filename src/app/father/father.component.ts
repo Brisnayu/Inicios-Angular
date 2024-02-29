@@ -11,8 +11,14 @@ import { SonComponent } from "./son/son.component";
 })
 export class FatherComponent {
   public message: string = "Hola desde el componente padre";
-  
+
+  public inputValue: string = "";
+
   public handleMessage(message: string) {
     console.log(message);
+  }
+
+  public changeInputValue(event: Event) {
+    this.inputValue = (event.target as HTMLInputElement).value;
   }
 }

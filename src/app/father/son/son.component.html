@@ -3,5 +3,11 @@
 >
     <h3>Componente HIJO!</h3>
     <p>{{ message }}</p>
+
+    <input
+    [value]="inputValue"
+    (input)="changeInputValue($event)"
+    >
+
     <button (click)="sendMessage()">Mandar Mensaje</button>
 </div>

@@ -1,7 +1,13 @@
 <div style="padding: 16px; margin-top: 2rem; border: 2px solid red">
   <h2>Componente PADRE!</h2>
 
+  <input
+    [value]="inputValue"
+    (input)="changeInputValue($event)"
+  >
+
   <app-son [message]="message"
   (messageSent)="handleMessage($event)"
+  [(inputValue)]="inputValue"
   ></app-son>
 </div>
